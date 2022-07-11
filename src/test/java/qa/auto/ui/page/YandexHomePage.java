@@ -1,5 +1,6 @@
 package qa.auto.ui.page;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -17,6 +18,7 @@ public class YandexHomePage {
      * @param term value of search term
      * @return yandex results page
      */
+    @Step("Filling search input via text: \"{term}\" and press 'Enter'")
     public YandexResultsPage search(String term) {
         $(searchInput).setValue(term).pressEnter();
         return new YandexResultsPage();

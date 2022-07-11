@@ -1,5 +1,8 @@
 package qa.auto.ui.test;
 
+import com.codeborne.selenide.Condition;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import qa.auto.ui.base.BaseState;
@@ -10,16 +13,18 @@ import java.util.List;
 
 import static com.codeborne.selenide.Selenide.*;
 
+@Epic(value = "Search")
+@Feature(value = "Simple search")
 public class SearchTest extends BaseState {
 
     private final String searchQuery = "Тест";
 
-    @Test
+    @Test(description = "Simple search and results checking")
     public void testYandexSimpleSearch() {
 
         List<String> results = new YandexHomePage()
                 .search(searchQuery)
-                .getResultsWithoutAds();
+                .results().exclude(Condition.text("Реклама")).texts();
 
         Assert.assertTrue(
                 results.stream().allMatch(r -> r.toLowerCase().contains(searchQuery.toLowerCase())),
@@ -27,14 +32,14 @@ public class SearchTest extends BaseState {
                         + "\n search term: " + searchQuery);
     }
 
-    @Test
+    @Test(description = "Simple search and results opening")
     public void testYandexOpenResult() {
 
         YandexResultsPage yandexResultsPage = new YandexHomePage().search(searchQuery);
 
-        int resultsCount = yandexResultsPage.getResultsCount();
+        int resultsCount = yandexResultsPage.results().size();
         for (int i = 0; i < resultsCount; i++) {
-            yandexResultsPage.clickResult(i);
+            yandexResultsPage.openResult(i);
 
             // check result page have mentions of search query
             Assert.assertTrue(
