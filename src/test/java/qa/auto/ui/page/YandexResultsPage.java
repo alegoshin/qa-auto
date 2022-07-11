@@ -11,6 +11,7 @@ public class YandexResultsPage {
 
     // locators
     private final By resultsList = By.xpath("//li[@class='serp-item serp-item_card' and not(@data-fast-name='multiusurveys')]");
+    private final By resultsHeadersList = By.xpath("//li[@class='serp-item serp-item_card' and not(@data-fast-name='multiusurveys')]//h2");
 
     // methods
 
@@ -30,6 +31,16 @@ public class YandexResultsPage {
      */
     public List<String> getResultsWithoutAds() {
         return $$(resultsList).exclude(Condition.text("Реклама")).texts();
+    }
+
+    public int getResultsCount() {
+        return $$(resultsList).size();
+    }
+
+    public void clickResult(int index) {
+        int windowsCount = webdriver().object().getWindowHandles().size();
+        $$(resultsHeadersList).get(index).click();
+        switchTo().window(windowsCount);
     }
 
 }
