@@ -1,0 +1,7 @@
+[
+  {
+    "name": "Page from results don't have the search query",
+    "matchedStatuses": ["failed"],
+    "messageRegex": "Page from results don't have the search query"
+  }
+]
