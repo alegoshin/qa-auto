@@ -22,8 +22,8 @@ public class DBConnector {
         }
     }
 
-    public static void main(String[] args) {
-        getConnection();
-        System.out.println("Connection to PostgreSQL is success");
-    }
+//    public static void main(String[] args) {
+//        getConnection();
+//        System.out.println("Connection to PostgreSQL is success");
+//    }
 }
