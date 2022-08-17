@@ -87,7 +87,7 @@ public class SQLTest extends SQLBaseState {
                 "INSERT INTO population (main_language, population) VALUES ('Nepali', '29640448'); " +
                 "INSERT INTO economy (gdb, currency) VALUES ('101,9 billion', 'Nepalese rupee');";
         executeUpdate(rowsAddQuery);
-        ResultSet rs = executeQuery("SELECT count(*) FROM countries");
+        ResultSet rs = executeQuery("SELECT id FROM countries WHERE name = 'Nepal'");
         rs.next();
         int newRecordId = rs.getInt(1);
 
