@@ -6,7 +6,7 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.auto.ui.base.BaseState;
+import qa.auto.ui.base.UIBaseState;
 import qa.auto.ui.page.YandexHomePage;
 import qa.auto.ui.page.YandexResultsPage;
 
@@ -18,9 +18,9 @@ import static com.codeborne.selenide.Selenide.*;
 
 @Epic(value = "Search")
 @Feature(value = "Simple search")
-public class SearchTest extends BaseState {
+public class SearchTest extends UIBaseState {
 
-    private final String searchQuery = "Тест";
+    private final String searchQuery = "Test";
 
     @BeforeMethod
     @Step("Navigate to results page with search query")

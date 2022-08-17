@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
-public class BaseState {
+public class UIBaseState {
 
     @BeforeMethod
     @Step("Browser configuration")
