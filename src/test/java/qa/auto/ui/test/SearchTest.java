@@ -20,7 +20,7 @@ import static com.codeborne.selenide.Selenide.*;
 @Feature(value = "Simple search")
 public class SearchTest extends UIBaseState {
 
-    private final String searchQuery = "Test";
+    private final String searchQuery = "Тест";
 
     @BeforeMethod
     @Step("Navigate to results page with search query")
@@ -36,8 +36,7 @@ public class SearchTest extends UIBaseState {
 
         Assert.assertTrue(
                 results.stream().allMatch(r -> r.toLowerCase().contains(searchQuery.toLowerCase())),
-                "Not all results match the search term: \nResults list: " + results.toString()
-                        + "\n search term: " + searchQuery);
+                "Not all results match the search term: " + searchQuery);
     }
 
     @Test(description = "Simple search and results opening")
@@ -76,8 +75,7 @@ public class SearchTest extends UIBaseState {
 
             Assert.assertTrue(
                     results.stream().allMatch(r -> r.toLowerCase().contains(searchQuery.toLowerCase())),
-                    "Not all results match the search term: \nResults list: " + results.toString()
-                            + "\n search term: " + searchQuery);
+                    "Not all results match the search term: " + searchQuery);
         }
     }
 
