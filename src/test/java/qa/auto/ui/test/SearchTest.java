@@ -20,7 +20,7 @@ import static com.codeborne.selenide.Selenide.*;
 @Feature(value = "Simple search")
 public class SearchTest extends UIBaseState {
 
-    private final String searchQuery = "Тест";
+    private final String searchQuery = "Test";
 
     @BeforeMethod
     @Step("Navigate to results page with search query")
