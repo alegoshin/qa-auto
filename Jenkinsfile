@@ -1,9 +1,9 @@
 pipeline {
     agent any
 
-    tools {
-        maven "3.8.6"
-    }
+//     tools {
+//         maven "3.8.6"
+//     }
 
     stages {
         stage('Build') {
@@ -23,10 +23,9 @@ pipeline {
     }
     post {
         always {
-            allure([
-                reportBuildPolicy: 'ALWAYS',
-                results: [[path: 'allure-results']],
-            ])
+            echo 'Results process was started'
+            bat "mvn allure:serve"
+            echo 'Results process was ended'
         }
     }
 }
