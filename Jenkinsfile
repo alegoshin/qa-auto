@@ -1,23 +1,33 @@
 pipeline {
     agent any
+
+    tools {
+        jdk "11"
+        maven "3.8.6"
+    }
+
     stages {
         stage('Build') {
             steps {
                 echo 'Build process was started'
+                bat "mvn test"
                 echo 'Build process was ended'
             }
         }
-        stage('Test') {
+        stage('Results') {
             steps {
-                echo 'Test process was started'
-                echo 'Test process was ended'
-            }
-        }
-        stage('Report') {
-            steps {
-                echo 'Report process was started'
-                echo 'Report process was ended'
+                echo 'Results process was started'
+                bat "mvn allure:serve"
+                echo 'Results process was ended'
             }
         }
     }
+//     post {
+//         always {
+//             allure([
+//                 reportBuildPolicy: 'ALWAYS',
+//                 results: [[path: 'allure-results']],
+//             ])
+//         }
+//     }
 }

@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE, ElementType.METHOD})
 public @interface BaseUrl {
 
-    String url() default "https://yandex.ru";
+    String url() default "https://ya.ru";
 
 
 }

@@ -34,7 +34,7 @@ public class UIBaseState {
         } else if (method.getDeclaringClass().isAnnotationPresent(BaseUrl.class)) {
             url = method.getDeclaringClass().getAnnotation(BaseUrl.class).url();
         } else {
-            url = "https://yandex.ru";
+            url = "https://ya.ru";
         }
         return url;
     }
