@@ -13,20 +13,20 @@ pipeline {
                 echo 'Build process was ended'
             }
         }
-        stage('Results') {
-            steps {
-                echo 'Results process was started'
-                bat "mvn allure:serve"
-                echo 'Results process was ended'
-            }
+//         stage('Results') {
+//             steps {
+//                 echo 'Results process was started'
+//                 bat "mvn allure:serve"
+//                 echo 'Results process was ended'
+//             }
+//         }
+    }
+    post {
+        always {
+            allure([
+                reportBuildPolicy: 'ALWAYS',
+                results: [[path: 'allure-results']],
+            ])
         }
     }
-//     post {
-//         always {
-//             allure([
-//                 reportBuildPolicy: 'ALWAYS',
-//                 results: [[path: 'allure-results']],
-//             ])
-//         }
-//     }
 }
